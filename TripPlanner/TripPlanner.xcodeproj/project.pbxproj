@@ -15,6 +15,10 @@
 		FC9A630B1BDC3B9300A66048 /* TripPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A630A1BDC3B9300A66048 /* TripPlannerTests.swift */; };
 		FC9A63161BDC414900A66048 /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A63151BDC414900A66048 /* AddTripViewController.swift */; };
 		FC9A63181BDC41C800A66048 /* PlannedTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A63171BDC41C800A66048 /* PlannedTripsViewController.swift */; };
+		FC9A631D1BDC50BE00A66048 /* NoWaypointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A631C1BDC50BE00A66048 /* NoWaypointsViewController.swift */; };
+		FC9A631F1BDC50CA00A66048 /* WaypointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A631E1BDC50CA00A66048 /* WaypointsViewController.swift */; };
+		FC9A63211BDC50E800A66048 /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A63201BDC50E800A66048 /* AddWaypointViewController.swift */; };
+		FC9A63231BDC510500A66048 /* WaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A63221BDC510500A66048 /* WaypointViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,10 @@
 		FC9A630C1BDC3B9300A66048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC9A63151BDC414900A66048 /* AddTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddTripViewController.swift; path = ../AddTripViewController.swift; sourceTree = "<group>"; };
 		FC9A63171BDC41C800A66048 /* PlannedTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlannedTripsViewController.swift; path = ../PlannedTripsViewController.swift; sourceTree = "<group>"; };
+		FC9A631C1BDC50BE00A66048 /* NoWaypointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoWaypointsViewController.swift; sourceTree = "<group>"; };
+		FC9A631E1BDC50CA00A66048 /* WaypointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointsViewController.swift; sourceTree = "<group>"; };
+		FC9A63201BDC50E800A66048 /* AddWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
+		FC9A63221BDC510500A66048 /* WaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,10 @@
 			children = (
 				FC9A63151BDC414900A66048 /* AddTripViewController.swift */,
 				FC9A63171BDC41C800A66048 /* PlannedTripsViewController.swift */,
+				FC9A631C1BDC50BE00A66048 /* NoWaypointsViewController.swift */,
+				FC9A631E1BDC50CA00A66048 /* WaypointsViewController.swift */,
+				FC9A63201BDC50E800A66048 /* AddWaypointViewController.swift */,
+				FC9A63221BDC510500A66048 /* WaypointViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,9 +239,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9A631D1BDC50BE00A66048 /* NoWaypointsViewController.swift in Sources */,
+				FC9A63231BDC510500A66048 /* WaypointViewController.swift in Sources */,
 				FC9A63181BDC41C800A66048 /* PlannedTripsViewController.swift in Sources */,
 				FC9A63161BDC414900A66048 /* AddTripViewController.swift in Sources */,
+				FC9A631F1BDC50CA00A66048 /* WaypointsViewController.swift in Sources */,
 				FC9A62FB1BDC3B9300A66048 /* TripPlanner.xcdatamodeld in Sources */,
+				FC9A63211BDC50E800A66048 /* AddWaypointViewController.swift in Sources */,
 				FC9A62F31BDC3B9300A66048 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

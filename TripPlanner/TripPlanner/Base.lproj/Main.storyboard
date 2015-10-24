@@ -1,65 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNN-os-S4G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0D0-jb-Lbp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="DTm-c6-8hi">
+        <!--Planned Trips-->
+        <scene sceneID="V3g-2V-FBW">
             <objects>
-                <viewController id="zNN-os-S4G" sceneMemberID="viewController">
+                <tableViewController title="Planned Trips" id="9CX-uw-AWS" customClass="PlannedTripsViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Egv-sV-A3m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AzN-XA-DbX">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AzN-XA-DbX" id="CNK-cA-qND">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9CX-uw-AWS" id="8jV-rf-gaJ"/>
+                            <outlet property="delegate" destination="9CX-uw-AWS" id="v4u-Z3-T9k"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Planned Trips" id="M4W-bm-hUI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ajz-pb-ETk">
+                            <connections>
+                                <segue destination="rVS-GA-Lw8" kind="show" id="zQ2-4a-Rsk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APg-Vg-7lW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="332"/>
+        </scene>
+        <!--Add Trip-->
+        <scene sceneID="65p-70-Crx">
+            <objects>
+                <viewController title="Add Trip" id="rVS-GA-Lw8" customClass="AddTripViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AqM-AY-fmx"/>
-                        <viewControllerLayoutGuide type="bottom" id="S8p-gN-Pom"/>
+                        <viewControllerLayoutGuide type="top" id="VaY-hH-G1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="jgt-dH-xRa"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Dl7-mg-5Ti">
+                    <view key="view" contentMode="scaleToFill" id="4PH-oK-RGC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRa-aG-lht">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtG-mI-NFr">
+                                <rect key="frame" x="219" y="267" width="162" height="21"/>
                                 <animations/>
-                                <items>
-                                    <navigationItem title="Planned Trips" id="uA3-ry-GD7">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HH3-vt-aTu"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oi5-na-qM7">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4lk-Jb-lgQ"/>
+                                    <constraint firstAttribute="width" constant="162" id="czY-C2-GVG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Untitled Trip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUI-io-Cn0">
+                                <rect key="frame" x="181" y="330" width="239" height="30"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TKV-ru-vXC">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TKV-ru-vXC" id="icf-cQ-S3k">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="ewa-qu-wf1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oi5-na-qM7" firstAttribute="leading" secondItem="wRa-aG-lht" secondAttribute="leading" id="0Rg-WD-Ygq"/>
-                            <constraint firstItem="wRa-aG-lht" firstAttribute="top" secondItem="AqM-AY-fmx" secondAttribute="bottom" id="2lw-3B-TwN"/>
-                            <constraint firstAttribute="trailing" secondItem="wRa-aG-lht" secondAttribute="trailing" id="5f2-yB-OG0"/>
-                            <constraint firstItem="oi5-na-qM7" firstAttribute="bottom" secondItem="S8p-gN-Pom" secondAttribute="top" id="SzF-dD-uxe"/>
-                            <constraint firstItem="oi5-na-qM7" firstAttribute="leading" secondItem="Dl7-mg-5Ti" secondAttribute="leading" id="dqt-4d-FPs"/>
-                            <constraint firstItem="oi5-na-qM7" firstAttribute="trailing" secondItem="wRa-aG-lht" secondAttribute="trailing" id="qff-Wg-de9"/>
-                            <constraint firstItem="oi5-na-qM7" firstAttribute="top" secondItem="wRa-aG-lht" secondAttribute="bottom" id="uWZ-1I-yAt"/>
+                            <constraint firstItem="pUI-io-Cn0" firstAttribute="centerX" secondItem="PtG-mI-NFr" secondAttribute="centerX" id="3rg-Xw-qMm"/>
+                            <constraint firstItem="PtG-mI-NFr" firstAttribute="top" secondItem="VaY-hH-G1h" secondAttribute="bottom" constant="203" id="Csv-BV-9O9"/>
+                            <constraint firstItem="pUI-io-Cn0" firstAttribute="centerX" secondItem="4PH-oK-RGC" secondAttribute="centerX" id="WTX-K5-rGh"/>
+                            <constraint firstItem="pUI-io-Cn0" firstAttribute="top" secondItem="PtG-mI-NFr" secondAttribute="bottom" constant="42" id="pd5-Ue-oBq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Trip" id="Xrx-JL-MdH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GlO-im-8TI">
+                            <connections>
+                                <action selector="CancelPressed:" destination="rVS-GA-Lw8" id="0G5-cg-vHJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="iel-IR-jAc">
+                            <connections>
+                                <action selector="AddPressed:" destination="rVS-GA-Lw8" id="eh5-9N-c5x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z01-w7-ASh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDW-92-3ez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072" y="333"/>
+            <point key="canvasLocation" x="1733" y="332"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jII-T9-jbQ">
+            <objects>
+                <navigationController id="0D0-jb-Lbp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jUu-Sv-h3w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9CX-uw-AWS" kind="relationship" relationship="rootViewController" id="G1r-tk-uVT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nh3-ik-ScF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="332"/>
         </scene>
     </scenes>
 </document>

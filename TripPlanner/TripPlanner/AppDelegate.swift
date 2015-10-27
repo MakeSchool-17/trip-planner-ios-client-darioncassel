@@ -18,44 +18,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Connect to flask backend and Register user
-        let registerURL = NSURL(string: "http://127.0.0.1:5000/register/")
-        let registerRequest = NSMutableURLRequest(URL: registerURL!)
-        registerRequest.HTTPMethod = "POST"
-        registerRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        registerRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        let params = ["username":"user", "password":"pass"] as Dictionary<String, String>
-        let options = NSJSONWritingOptions.PrettyPrinted
-        do {
-            registerRequest.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: options)
-        } catch {
-            print("Error")
-        }
-        NSURLSession.sharedSession().dataTaskWithRequest(registerRequest) { data, res, err in
-            if let res = res {
-                let data = res as! NSHTTPURLResponse
-                // If registration is successful, login
-                if data.statusCode==200 {
-                    let loginURL = NSURL(string: "http://127.0.0.1:5000/login/")
-                    let loginRequest = NSMutableURLRequest(URL: loginURL!)
-                    loginRequest.HTTPMethod = "POST"
-                    loginRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                    loginRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-                    let params = ["username":"user", "password":"pass"] as Dictionary<String, String>
-                    let options = NSJSONWritingOptions.PrettyPrinted
-                    do {
-                        registerRequest.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: options)
-                    } catch {
-                        print("Error")
-                    }
-                    NSURLSession.sharedSession().dataTaskWithRequest(loginRequest) { data, res, err in
-                        print("logged in")
-                        print(res)
-                    }.resume()
-                } else {
-                    print("Failed to Register!")
-                }
+        if NSUserDefaults.standardUserDefaults().valueForKey("UserRegistered")==nil {
+            let registerURL = NSURL(string: "http://127.0.0.1:5000/register/")
+            let registerRequest = NSMutableURLRequest(URL: registerURL!)
+            registerRequest.HTTPMethod = "POST"
+            registerRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            registerRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            let params = ["username":"user", "password":"pass"] as Dictionary<String, String>
+            let options = NSJSONWritingOptions.PrettyPrinted
+            do {
+                registerRequest.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: options)
+            } catch {
+                print("Error")
             }
-        }.resume()
+            NSURLSession.sharedSession().dataTaskWithRequest(registerRequest) { data, res, err in
+                if let res = res {
+                    let data = res as! NSHTTPURLResponse
+                    // If registration is successful, login
+                    if data.statusCode==200 {
+                        let loginURL = NSURL(string: "http://127.0.0.1:5000/login/")
+                        let loginRequest = NSMutableURLRequest(URL: loginURL!)
+                        loginRequest.HTTPMethod = "POST"
+                        loginRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                        loginRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+                        let params = ["username":"user", "password":"pass"] as Dictionary<String, String>
+                        let options = NSJSONWritingOptions.PrettyPrinted
+                        do {
+                            loginRequest.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: options)
+                        } catch {
+                            print("Error")
+                        }
+                        NSURLSession.sharedSession().dataTaskWithRequest(loginRequest) { data, res, err in
+                            if let data = data {
+                                let jsonResult = (try! NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary)
+                                if let token = jsonResult["token"] {
+                                    print(token)
+                                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "UserRegistered")
+                                }
+                            } else {
+                                print("Didn't get a token!")
+                            }
+                        }.resume()
+                    } else {
+                        print("Failed to Register!")
+                    }
+                }
+            }.resume()
+        } else {
+            let loginURL = NSURL(string: "http://127.0.0.1:5000/login/")
+            let loginRequest = NSMutableURLRequest(URL: loginURL!)
+            loginRequest.HTTPMethod = "POST"
+            loginRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            loginRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            let params = ["username":"user", "password":"pass"] as Dictionary<String, String>
+            let options = NSJSONWritingOptions.PrettyPrinted
+            do {
+                loginRequest.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: options)
+            } catch {
+                print("Error")
+            }
+            NSURLSession.sharedSession().dataTaskWithRequest(loginRequest) { data, res, err in
+                if let data = data {
+                    let jsonResult = (try! NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary)
+                    if let token = jsonResult["token"] {
+                        print(token)
+                        NSUserDefaults.standardUserDefaults().setValue(token, forKey: "UserToken")
+                    }
+                } else {
+                    print("Didn't get a token!")
+                }
+            }.resume()
+        }
         return true
     }
 
